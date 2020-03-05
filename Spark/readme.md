@@ -74,7 +74,11 @@ Always ask fore more executors in place of 1 xecutor with higher memory so take 
 number of blocks=1024/128=8 = no. of partions can be 8
 
 if we have 4 executors:
+
 ex1 block 1,2
+
 ex2 block 3,4
+
 ex3 block 5,6
+
 ex4 block 7,8
