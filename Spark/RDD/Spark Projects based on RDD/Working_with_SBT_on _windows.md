@@ -62,10 +62,9 @@ Maven coordinates:
 Jenkins is used to create the build for production in industry.	
 
 vi simple.sbt
+
 name := "Simple Project"
-
 version := "1.0"
-
 scalaVersion := "2.11.8"
 
 libraryDependencies += "org.apache.spark" %% "spark-sql" % "2.3.0"              // specify ur scala and spark versions in this sbt file
