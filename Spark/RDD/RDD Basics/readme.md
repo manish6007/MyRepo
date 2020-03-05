@@ -142,12 +142,13 @@ val b = a.sample(false,.0001,34)==>1800 partitions
 b contains 1000 lines , 1800 partitions
 in this case we need to use coalesce to reduce number of paritions
 
+Note: In order to increase or decrease the partition we can use reparition. Coalease decreases the number of shuffle operations.
 
-why program is running slow:
+Why program is running slow:
 -----------------------------------
-skewness in the data:
+Skewness in the data:
 
-when we represnt the data in key value pair some key will have more data and other will have less data. This is called skewness.
+when we represent the data in key value pair some key will have more data and other will have less data. This is called skewness.
 
 a, 1million--> 1 processor thread
 q, 5000 -------> 1thread
@@ -156,7 +157,7 @@ To resolve this we use salting the key.
 In this technique the key which is having more data will be divided.
 
 
-Note: In order to increse or decrease the partition we can use reparition. Coalease decreases the number of shuffle operations.
+
 
 
 Caching the RDD:
