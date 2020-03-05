@@ -13,12 +13,12 @@ To package a jar in Windows, firstly you have to install SBT. Follow the instruc
  
    sbt about
 
-
 Problem statement: We will count the no of number of lines with "a" and "b" in the file stored in HDFS.
 
 Create a directory structure in any one of the location
 
 mkdir spark_testing
+
 cd spark_testing/
 
 create a sbt file with the command :   
@@ -26,13 +26,17 @@ create a sbt file with the command :
 touch simple.sbt
 
 src/main/scala
+
 mkdir src
+
 cd src/
 
 mkdir main
+
 cd main/
 
 mkdir scala
+
 cd scala/
 
 vi SimpleApp.scala
