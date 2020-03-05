@@ -62,10 +62,10 @@ reduceByKey = (Manish,(1,1,1))
 
 take any 2 values x and y and keep on adding them until all the values are over
 
-                      x y
+                       x y
 reduceByKey =(Manish,(1,1,1))
 
-         x y
+          x y
 (Manish,(2,1))
 
 Result: (Manish,3)
