@@ -5,8 +5,11 @@ RDD-Resilient, Distributed, Dataset
 4. RDD's are by default immutable.
 
 spark session object is used while working with spark sql.
+
+
 Creating an RDD.
 --------------------
+
 1. From existing collection (Array, List, Sequence)
 Eg. Val rdd = sc.parallelize(List("Manish","Rahul")
 val a = sc.parallelize(1 to 100)
@@ -16,10 +19,12 @@ Transformations(Lazy) and Actions:
 Partitions in RDD: whenever we create an RDD the data is partitioned.
 
 To identify number of partitions:
+
 val a = sc. parallelize(1 to 100)
 a.partition.length
 
 Partition logic:
+
 no. of partitions = no. of processor cores
 
 we can change number of partitions by explicitely defining the partitions while creating the RDD.
