@@ -35,11 +35,13 @@ Now, update your environment variables
 Edit System variables  and add 
 
 HADOOP_HOME = C:\hadoop
+
 SPARK_HOME = C:\Spark
 
 Edit path and add 
 
 %HADOOP_HOME%\bin
+
 %SPARK_HOME%\bin
 
 Start spark using spark-shell
@@ -56,6 +58,7 @@ Master                            Slave
 Driver                            Executor
 
 Check the version of Spark
+
 spark-shell --version
 
 In order to start the scala shell of Spark
