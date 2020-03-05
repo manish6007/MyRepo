@@ -6,7 +6,6 @@ Spark is the classic replacement of map reduce. Spark is programming framework/E
 
 Spark is plateform independent. It is not necessary to be installed on top of hadoop.
 
-IQ:
 Drawbacks of mapreduce:
 -------------------------------
 1. Intermediate read and write.
