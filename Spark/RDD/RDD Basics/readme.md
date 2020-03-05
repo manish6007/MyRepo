@@ -31,7 +31,7 @@ while reading from hdfs the number of partitions will be equal to number of bloc
 
 Collect is most used action when we use actions we can see the stats on Spark UI.
 
-actions:
+Actions:
 --------
 collect
 count
@@ -150,15 +150,13 @@ Skewness in the data:
 
 when we represent the data in key value pair some key will have more data and other will have less data. This is called skewness.
 
-a, 1million--> 1 processor thread
-q, 5000 -------> 1thread
+a. 1 million--> 1 processor thread
+
+q. 5000 -------> 1 thread
 
 To resolve this we use salting the key.
+
 In this technique the key which is having more data will be divided.
-
-
-
-
 
 Caching the RDD:
 ----------------------
