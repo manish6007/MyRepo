@@ -115,6 +115,26 @@ val characters_df = spark.read.format("com.databricks.spark.csv").option("header
 
 characters_df.show
 
+Dealing with xml files
+---------------------
+
+To read xml files you need to restart your spark-shell with the below given arguments
+
+spark-shell --packages com.databricks:spark-xml_2.11:0.4.1
+
+		OR
+Download the jar and place it in jars folder under spark installation /get the maven co-ordinates from 		
+https://mvnrepository.com/artifact/com.databricks/spark-xml_2.11/0.4.1
+
+val employees_df = spark.read.format("com.databricks.spark.xml").option("inferSchema", "true").option("rootTag","employees").option("rowTag","employee").load("C:/Users/e1091444/Desktop/Spark/SparkSQL/class_material26thmay/datasets/datasets/employees.xml")
+
+val emp_dataNormal = employees_df.select("emp_no","emp_name","address.city","address.country","address.pincode","salary","dept_no").show
+
+Dealing with parquet files
+--------------------------
+val baby_names_df = spark.read.parquet("C:/Users/e1091444/Desktop/Spark/SparkSQL/class_material26thmay/datasets/datasets/baby_names.parquet")
+baby_names_df.show
+
 
 Dataset:
 --------
