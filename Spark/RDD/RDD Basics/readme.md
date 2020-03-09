@@ -3,6 +3,7 @@ RDD-Resilient, Distributed, Dataset
 2. End of the day everything is RDD in spark.
 3. RDD is the collection of elements(Grouping of data)
 4. RDD's are by default immutable.
+5. RDD is a pointer to the data.
 
 spark session object is used while working with spark sql.
 
