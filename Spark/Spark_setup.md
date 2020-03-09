@@ -16,8 +16,6 @@ There are 4 reasons why Spark is popular
 Mapreduce cannot do iterative processing.
 Spark is fast due to in-memory computing
 
-RDD is a pointer to the data.
-
 Installing Spark on Windows
 ===========================
 http://spark.apache.org/downloads.html
