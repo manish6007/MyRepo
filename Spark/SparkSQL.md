@@ -104,7 +104,7 @@ spark.sql("select * from people").show
 
 Reading CSV data using databricks csv packages
 ----------------------------------------------------------------------
-Download the jar/get the maven co-ordinates from https://mvnrepository.com/artifact/com.databricks/spark-csv_2.11/1.5.0
+Download the jar and place it in jars folder under spark installation /get the maven co-ordinates from https://mvnrepository.com/artifact/com.databricks/spark-csv_2.11/1.5.0
 
 Or 
 Start the shell using below command.
