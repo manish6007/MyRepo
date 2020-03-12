@@ -1,0 +1,37 @@
+San Francisco Fire Department calls for service
+-----------------------------------------------
+The file size is approximately 1.4 GB and it contains approximately 4.35 million rows in 34 columns. The data includes all fire units’ responses to calls. Each record includes the call number, incident number, address, unit identifier, call type, and disposition. All relevant time intervals are also included. Because this dataset is based on responses, and since most calls involved multiple units, there are multiple records for each call number. Addresses are associated with a block number, intersection or call box, not a specific address. The data schema is:Call Number
+- Call Number
+- Unit ID
+- Incident Number
+- Call Type
+- Call Date
+- Watch Date
+- Received DtTm
+- Entry DtTm
+- Dispatch DtTm
+- Response DtTm
+- On Scene DtTm
+- Transport DtTm
+- Hospital DtTm
+- Call Final Disposition
+- Available DtTm
+- Address
+- City
+- Zipcode of Incident
+- Battalion
+- Station Area
+- Box
+- Original Priority
+- Priority
+- Final Priority
+- ALS Unit
+- Call Type Group
+- Number of Alarms
+- Unit Type
+- Unit sequence in call dispatch
+- Fire Prevention District
+- Supervisor District
+- Neighborhooods - Analysis Boundaries
+- Location
+- RowID
