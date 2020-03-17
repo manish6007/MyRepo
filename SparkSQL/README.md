@@ -48,20 +48,18 @@ SparkSQL queries will be faster than RDD based queries beacuse of catalyst optim
 
 SQL
 DataFrame-->Query Plan(Cost plan)-->Optimized query plan(least cost plan)-->RDD
-DataSets
 
-﻿﻿databricks
 
 Dataframes are immutable as dataframe is a layer on top of RDD.
-----------------------------
+---------------------------------------------------------------
 
 If we collect() on dataframe we will get apache.spark.sql.row
 
-Spark 1		Spark2
----------	---------
-SQLContext	Spark Session(spark)
-Hive Context	Spark session can talk to Hive
 
+Spark 1 Vs Spark 2:
+--------------------
+ - Spark 1 is using the SQLContext whereas Spark 2 uses SparkSession Object.
+ - Spark 1 have Hive context to interact with Hive whereas Spark Session itself can interact with hive.
 
 SparkSQL is used to analyse the data(query engine) not for storing the data.
 
@@ -72,76 +70,76 @@ Creating DataFrame:
 
 1) Infer schema using reflection: This technique uses case class for reflection.
 2) Pragamatically specifying the schema
-- Create row based RDD.
-- Use struc type for schema
-- Use createDataframe to create dataframe
+    - Create row based RDD.
+    - Use struc type for schema
+    - Use createDataframe to create dataframe
 
 Note:
 -----
-- We use struct type as case class is having a limilation of having maximum 32 columns. struct type can have any number of columns
-- On the fly schema can be defined in structtype.
-- RDD needs to be converted in the sql row before creating the dataframe
+   - We use struct type as case class is having a limilation of having maximum 32 columns. struct type can have any number of columns
+   - On the fly schema can be defined in structtype.
+   - RDD needs to be converted in the sql row before creating the dataframe
 
 Example:
 --------
 
-import org.apache.spark.sql.types._
+    import org.apache.spark.sql.types._
 
-import org.apache.spark.sql.{Row, SparkSession}
+    import org.apache.spark.sql.{Row, SparkSession}
 
-val schema = StructType(Array(StructField("name",StringType,true),StructField("age",IntegerType,true)))
+    val schema = StructType(Array(StructField("name",StringType,true),StructField("age",IntegerType,true)))
 
-val data = sc.parallelize( Seq("john","Adom","Smith")).map(x => (x,20+x.length))
+    val data = sc.parallelize( Seq("john","Adom","Smith")).map(x => (x,20+x.length))
 
-val rowRDD = data.map(x => Row(x._1,x._2))	
+    val rowRDD = data.map(x => Row(x._1,x._2))	
 
-val df = spark.createDataFrame(rowRDD,schema)
+    val df = spark.createDataFrame(rowRDD,schema)
 
-df.createOrReplaceTempView("people")
+    df.createOrReplaceTempView("people")
 
-spark.sql("select * from people").show
+    spark.sql("select * from people").show
 
 
 Reading CSV data using databricks csv packages
 ----------------------------------------------------------------------
-Download the jar and place it in jars folder under spark installation /get the maven co-ordinates from https://mvnrepository.com/artifact/com.databricks/spark-csv_2.11/1.5.0
+   Download the jar and place it in jars folder under spark installation /get the maven co-ordinates from      https://mvnrepository.com/artifact/com.databricks/spark-csv_2.11/1.5.0
 
-Or 
-Start the shell using below command.
+  Or 
+  Start the shell using below command.
 
-spark-shell --packages com.databricks:spark-csv_2.11:1.5.0
+  spark-shell --packages com.databricks:spark-csv_2.11:1.5.0
 
-val characters_df = spark.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").option("delimiter", ",").load("/user/support1161/navya/StarWars.csv")
+  val characters_df = spark.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").option("delimiter", ",").load("/user/support1161/navya/StarWars.csv")
 
-characters_df.show
+  characters_df.show
 
-Dealing with xml files
----------------------
+  Dealing with xml files
+  ---------------------
 
-To read xml files you need to restart your spark-shell with the below given arguments
+  To read xml files you need to restart your spark-shell with the below given arguments
 
-spark-shell --packages com.databricks:spark-xml_2.11:0.4.1
+  spark-shell --packages com.databricks:spark-xml_2.11:0.4.1
 
 		OR
-Download the jar and place it in jars folder under spark installation /get the maven co-ordinates from 		
-https://mvnrepository.com/artifact/com.databricks/spark-xml_2.11/0.4.1
+  Download the jar and place it in jars folder under spark installation /get the maven co-ordinates from 		
+  https://mvnrepository.com/artifact/com.databricks/spark-xml_2.11/0.4.1
 
-val employees_df = spark.read.format("com.databricks.spark.xml").option("inferSchema", "true").option("rootTag","employees").option("rowTag","employee").load("C:/Users/e1091444/Desktop/Spark/SparkSQL/class_material26thmay/datasets/datasets/employees.xml")
+  val employees_df = spark.read.format("com.databricks.spark.xml").option("inferSchema",   "true").option("rootTag","employees").option("rowTag","employee").load("C:/Users/e1091444/Desktop/Spark/SparkSQL/class_material26thmay/d  atasets/datasets/employees.xml")
 
-val emp_dataNormal = employees_df.select("emp_no","emp_name","address.city","address.country","address.pincode","salary","dept_no").show
+  val emp_dataNormal = employees_df.select("emp_no","emp_name","address.city","address.country","address.pincode","salary","dept_no").show
 
 Dealing with parquet files
 --------------------------
-val baby_names_df = spark.read.parquet("C:/Users/e1091444/Desktop/Spark/SparkSQL/class_material26thmay/datasets/datasets/baby_names.parquet")
+  val baby_names_df = spark.read.parquet("C:/Users/e1091444/Desktop/Spark/SparkSQL/class_material26thmay/datasets/datasets/baby_names.parquet")
 baby_names_df.show
 
 
 Dataset:
 --------
-- A DataFrame is really just a dataset of row objects(Dataset[Row])
-- Datasets can explicitely wrap a given struct or type
+  - A DataFrame is really just a dataset of row objects(Dataset[Row])
+  - Datasets can explicitely wrap a given struct or type
 	Dataset[Person], Dataset[(String, Double)])
 	It knows what its columns are from the get go.
-- Dataframe's schema is inferred at run time; But the dataset can be inferred at complite time 
-- Faster detection of errors, and better optimization
-- RDD's can be converted to DataSets with .toDS()
+  - Dataframe's schema is inferred at run time; But the dataset can be inferred at complite time 
+  - Faster detection of errors, and better optimization
+  - RDD's can be converted to DataSets with .toDS()
