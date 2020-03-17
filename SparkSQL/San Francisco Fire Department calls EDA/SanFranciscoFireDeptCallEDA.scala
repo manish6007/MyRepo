@@ -21,7 +21,7 @@ object SanFranciscoFireDeptCallEDA {
       .config("spark.sql.warehouse.dir", "file:///C:/temp") // Necessary to work around a Windows bug in Spark 2.0.0; omit if you're not on Windows.
       .getOrCreate()
       
-    val input_df =spark.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").option("delimiter", ",").load("C:/Users/e1091444/Desktop/Spark/SparkSQL/class_material26thmay/datasets/datasets/fire.csv")
+    val input_df =spark.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").option("delimiter", ",").load("fire.csv")
     input_df.printSchema()
     input_df.show(5)
     println("Columns in data are as below:")

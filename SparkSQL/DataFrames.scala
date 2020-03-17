@@ -58,7 +58,7 @@ object DataFrames {
      //creating dataframe using case class
      //Example 4
      
-     val yahoo_stocks=spark.sparkContext.textFile("C:/Users/e1091444/Desktop/Spark/SparkSQL/class_material26thmay/datasets/datasets/yahoo_stocks.csv")
+     val yahoo_stocks=spark.sparkContext.textFile("../Datasets/yahoo_stocks.csv")
      val header =yahoo_stocks.first
      val data =yahoo_stocks.filter(_ != header)
      val stockprice_temp=data.map(_.split(",")).map(row =>YahooStockPrice(row(0).trim.toString, row(1).trim.toFloat, row(2).trim.toFloat, row(3).trim.toFloat, row(4).trim.toFloat, row(5).trim.toInt, row(6).trim.toFloat))
@@ -85,7 +85,7 @@ object DataFrames {
      
      //Reading CSV data using databricks csv packages
      println("CSV with Databrics package")
-     val characters_df = spark.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").option("delimiter", ",").load("C:/Users/e1091444/Desktop/Spark/SparkSQL/class_material26thmay/datasets/datasets/StarWars.csv")
+     val characters_df = spark.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").option("delimiter", ",").load("../Datasets/StarWars.csv")
      characters_df.show
      println("Record Count: " +characters_df.count())
      
@@ -98,34 +98,34 @@ object DataFrames {
      
      // reading csv data without databricks csv packages
      println("CSV without Databrics package")
-     val starwarcsv = spark.read.format("csv").option("inferSchema", "true").option("header","true").option("delimiter",",")load("C:/Users/e1091444/Desktop/Spark/SparkSQL/class_material26thmay/datasets/datasets/StarWars.csv")
+     val starwarcsv = spark.read.format("csv").option("inferSchema", "true").option("header","true").option("delimiter",",")load("../Datasets/StarWars.csv")
      starwarcsv.printSchema()
      starwarcsv.show()    
      
      //Reading JSON Files
      //Example 1 simple JSON
      println("JSON")
-     val persons = spark.read.json("C:/Users/e1091444/Desktop/Spark/SparkSQL/class_material26thmay/datasets/datasets/persons.json")
+     val persons = spark.read.json("../Datasets/persons.json")
      persons.createOrReplaceTempView("persons")
      spark.sql("select * from persons").show
      
     
     //Example 2 Nested JSON
      println(" Nested JSON") 
-     val employees_df = spark.read.json("C:/Users/e1091444/Desktop/Spark/SparkSQL/class_material26thmay/datasets/datasets/employee.json")
+     val employees_df = spark.read.json("../Datasets/employee.json")
      employees_df.createOrReplaceTempView("employees")
      spark.sql("select id,name,salary,address.city,address.country from employees").show
      
      
      //Dealing XML files
      println(" XML") 
-     val employees_df_xml = spark.read.format("com.databricks.spark.xml").option("inferSchema", "true").option("rootTag","employees").option("rowTag","employee").load("C:/Users/e1091444/Desktop/Spark/SparkSQL/class_material26thmay/datasets/datasets/employees.xml")
+     val employees_df_xml = spark.read.format("com.databricks.spark.xml").option("inferSchema", "true").option("rootTag","employees").option("rowTag","employee").load("../Datasets/employees.xml")
      val emp_dataNormal = employees_df_xml.select("emp_no","emp_name","address.city","address.country","address.pincode","salary","dept_no").show
      
      
     //Dealing PARQUET files
      println("PARQUET") 
-     val baby_names_df = spark.read.parquet("C:/Users/e1091444/Desktop/Spark/SparkSQL/class_material26thmay/datasets/datasets/baby_names.parquet")
+     val baby_names_df = spark.read.parquet("../Datasets/baby_names.parquet")
      baby_names_df.show
      
      

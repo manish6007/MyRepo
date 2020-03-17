@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<employees>
+	<employee>
+		<emp_no>10</emp_no>
+		<emp_name>jon</emp_name>
+		<address>
+			<city>Paris</city>
+			<country>London</country>
+			<pincode>200010</pincode>
+		</address>
+		<salary>15000</salary>
+		<dept_no>2</dept_no>	
+	</employee>
+	<employee>
+		<emp_no>11</emp_no>
+		<emp_name>Adom</emp_name>
+		<address>
+			<city>Texas</city>
+			<country>America</country>
+			<pincode>200040</pincode>
+		</address>
+		<salary>25000</salary>
+		<dept_no>5</dept_no>	
+	</employee>
+</employees>

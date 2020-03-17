@@ -22,7 +22,7 @@ object UserDataExploration {
       
       import spark.implicits._
       
-      val data = spark.sparkContext.textFile("C:/Users/e1091444/Desktop/Spark/RDD/userdata.txt", 3).map(line=> line.split(',')).map(x=>(x(0),x(1),x(2),x(3),x(4)))
+      val data = spark.sparkContext.textFile("../../Datasets/userdata.txt", 3).map(line=> line.split(',')).map(x=>(x(0),x(1),x(2),x(3),x(4)))
       //data.collect().foreach(println)
       val uniqueProfessions = data.map{case(id, age, gender, profession,zipcode) =>profession}.distinct().count()
       println("")

@@ -19,7 +19,7 @@ object DataFrameQueries {
       .config("spark.sql.warehouse.dir", "file:///C:/temp") // Necessary to work around a Windows bug in Spark 2.0.0; omit if you're not on Windows.
       .getOrCreate()
       
-      val df = spark.read.parquet("C:/Users/e1091444/Desktop/Spark/SparkSQL/class_material26thmay/datasets/datasets/part-r-00001_gz.parquet")
+      val df = spark.read.parquet("../Datasets/part-r-00001_gz.parquet")
       df.cache()
       df.printSchema()
       df.show()

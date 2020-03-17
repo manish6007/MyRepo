@@ -20,7 +20,7 @@ object LaborStatisticsEDA {
       .config("spark.sql.warehouse.dir", "file:///C:/temp") // Necessary to work around a Windows bug in Spark 2.0.0; omit if you're not on Windows.
       .getOrCreate()
       
-      val a = spark.read.textFile("C:/Users/e1091444/Desktop/Spark/SparkSQL/class_material26thmay/datasets/datasets/inc_occ_gender3.csv")
+      val a = spark.read.textFile("inc_occ_gender3.csv")
       val header = a.first
       val data1 = a.filter( _ != header)
       val row1 = data1.first

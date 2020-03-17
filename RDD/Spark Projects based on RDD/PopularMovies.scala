@@ -15,7 +15,7 @@ object PopularMovies {
     
      // Create a SparkContext using the local machine
     val sc = new SparkContext("local", "PopularMovies")   
-    val data = sc.textFile("C:/Users/e1091444/Desktop/Spark/RDD/popular_movies.txt")
+    val data = sc.textFile("../../Datasets/popular_movies.txt")
     val moviesdata = data.map(x=>(x.split("\t")(1),1)).reduceByKey(_+_).map(x=>(x._2,x._1)).sortByKey(false).top(10)
     println("Top 10 Popular movies:")
     for(result<-moviesdata){

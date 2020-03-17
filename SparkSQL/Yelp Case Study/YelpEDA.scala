@@ -21,7 +21,7 @@ object YelpEDA {
       .getOrCreate()
       
      //Loading the json file and register the table in SPARK SQL
-     val biz =spark.read.json("C:/Users/e1091444/Desktop/Spark/SparkSQL/class_material26thmay/datasets/datasets/business.json")
+     val biz =spark.read.json("business.json")
      biz.printSchema()
      biz.createOrReplaceTempView ("biz")
      biz.cache()

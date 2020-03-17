@@ -15,7 +15,7 @@ object WordCount {
     val sc = new SparkContext("local[*]", "WordCount")
    
     // Load up each line of the ratings data into an RDD
-    val book = sc.textFile("../SparkScala/book.txt")
+    val book = sc.textFile("../../Datasets/book.txt")
     
     val words = book.flatMap(x=>x.split("\\W+"))
     val lowercasewords = words.map(x=>x.toLowerCase()).map(x=>(x,1)).reduceByKey((x,y)=>(x+y))
