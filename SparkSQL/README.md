@@ -107,11 +107,14 @@ Reading CSV data using databricks csv packages
   Or 
   Start the shell using below command.
 
-  spark-shell --packages com.databricks:spark-csv_2.11:1.5.0
+Example:
+---------
 
-  val characters_df = spark.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").option("delimiter", ",").load("/user/support1161/navya/StarWars.csv")
+    spark-shell --packages com.databricks:spark-csv_2.11:1.5.0
 
-  characters_df.show
+    val characters_df = spark.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").option("delimiter", ",").load("/user/support1161/navya/StarWars.csv")
+
+    characters_df.show
 
   Dealing with xml files
   ---------------------
@@ -124,14 +127,18 @@ Reading CSV data using databricks csv packages
   Download the jar and place it in jars folder under spark installation /get the maven co-ordinates from 		
   https://mvnrepository.com/artifact/com.databricks/spark-xml_2.11/0.4.1
 
-  val employees_df = spark.read.format("com.databricks.spark.xml").option("inferSchema",   "true").option("rootTag","employees").option("rowTag","employee").load("C:/Users/e1091444/Desktop/Spark/SparkSQL/class_material26thmay/d  atasets/datasets/employees.xml")
+Example:
+---------
+    val employees_df = spark.read.format("com.databricks.spark.xml").option("inferSchema",   "true").option("rootTag","employees").option("rowTag","employee").load("C:/Users/e1091444/Desktop/Spark/SparkSQL/class_material26thmay/d  atasets/datasets/employees.xml")
 
-  val emp_dataNormal = employees_df.select("emp_no","emp_name","address.city","address.country","address.pincode","salary","dept_no").show
+    val emp_dataNormal = employees_df.select("emp_no","emp_name","address.city","address.country","address.pincode","salary","dept_no").show
 
 Dealing with parquet files
 --------------------------
-  val baby_names_df = spark.read.parquet("C:/Users/e1091444/Desktop/Spark/SparkSQL/class_material26thmay/datasets/datasets/baby_names.parquet")
-baby_names_df.show
+ Example:
+---------
+    val baby_names_df = spark.read.parquet("C:/Users/e1091444/Desktop/Spark/SparkSQL/class_material26thmay/datasets/datasets/baby_names.parquet")
+    baby_names_df.show
 
 
 Dataset:
